@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tlofcyu0etqu"]
+
+[ext_resource type="Script" uid="uid://ckm2nuyt3bv6v" path="res://StateMachine/ActionStateMachine/ChargeState/charge_state.gd" id="1_j6og6"]
+
+[node name="ChargeState" type="Node"]
+script = ExtResource("1_j6og6")

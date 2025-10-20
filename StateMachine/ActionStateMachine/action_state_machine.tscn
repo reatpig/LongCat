@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://djxs3vdmjsrw"]
+
+[ext_resource type="Script" uid="uid://4lec5s167r86" path="res://StateMachine/ActionStateMachine/action_state_machine.gd" id="1_i4ty4"]
+[ext_resource type="PackedScene" uid="uid://tlofcyu0etqu" path="res://StateMachine/ActionStateMachine/ChargeState/charge_state.tscn" id="2_y8hyj"]
+[ext_resource type="PackedScene" uid="uid://cvwprose4uf52" path="res://StateMachine/ActionStateMachine/IdleState/idle_state.tscn" id="3_paoca"]
+[ext_resource type="PackedScene" uid="uid://cesucsavgwppx" path="res://StateMachine/ActionStateMachine/WalkState/walk_state.tscn" id="4_un3q7"]
+
+[node name="ActionStateMachine" type="Node"]
+script = ExtResource("1_i4ty4")
+
+[node name="ChargeState" parent="." instance=ExtResource("2_y8hyj")]
+
+[node name="IdleState" parent="." instance=ExtResource("3_paoca")]
+
+[node name="WalkState" parent="." instance=ExtResource("4_un3q7")]

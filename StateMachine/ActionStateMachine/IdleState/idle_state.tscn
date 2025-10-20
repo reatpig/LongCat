@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvwprose4uf52"]
+
+[ext_resource type="Script" uid="uid://p642a5eg2ft6" path="res://StateMachine/ActionStateMachine/IdleState/idle_state.gd" id="1_e0qbn"]
+
+[node name="IdleState" type="Node"]
+script = ExtResource("1_e0qbn")
