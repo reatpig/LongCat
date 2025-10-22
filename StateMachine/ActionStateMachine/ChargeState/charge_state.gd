@@ -7,33 +7,46 @@ var charge_time := 0.0
 var max_charge_time := 3.0
 enum BUILD_DIRECTION {UP, LEFT, RIGHT}
 var build_direction: BUILD_DIRECTION
+var extern_grow := false
 
+const MAX_BLOCKS_COUNT := 7
 func enter():
+	player.velocity = Vector2(0,0)
 	charge_time = 0.0
 	player.charge_timer.start()
 
 func exit():
 	player.charge_timer.stop()
 	var block_count = calc_block_count(charge_time)
+	if extern_grow:
+		block_count = MAX_BLOCKS_COUNT
+		extern_grow = false
 	build_block_chain(block_count)
 
 func update(delta):
 	charge_time = clamp(charge_time + delta, 0, max_charge_time)
 
 func handle_input(event):
+	
 	if event.is_action_released("GrowRight"):
+		if event.is_action_pressed("GrowMode"):
+			extern_grow = true
 		build_direction = BUILD_DIRECTION.RIGHT
 		state_machine.change_state("IdleState")
 	elif event.is_action_released("GrowLeft"):
+		if event.is_action_pressed("GrowMode"):
+			extern_grow = true
 		build_direction = BUILD_DIRECTION.LEFT
 		state_machine.change_state("IdleState")
 	elif event.is_action_released("GrowUp"):
+		if event.is_action_pressed("GrowMode"):
+			extern_grow = true
 		build_direction = BUILD_DIRECTION.UP
 		state_machine.change_state("IdleState")
 		
 
 func calc_block_count(t: float) -> int:
-	return clamp(int(t * 4) + 2, 2, 10)
+	return clamp(int(t * 10) + 2, 2, MAX_BLOCKS_COUNT)
 
 func build_block_chain(block_count: int):
 	var tilemap = player.tilemap

@@ -11,16 +11,12 @@ func handle_input(event):
 	if event.is_action_pressed("RightMove") or event.is_action_pressed("LeftMove"):
 		state_machine.change_state("WalkState")
 		
-	if !player.is_can_grow():
-		return
-		
-	if event.is_action_pressed("GrowUp"):
-		state_machine.change_state("ChargeState")
-	elif event.is_action_pressed("GrowRight"):
-		state_machine.change_state("ChargeState")
-	elif event.is_action_pressed("GrowLeft"):
-		state_machine.change_state("ChargeState")
-
+	if event.is_action_pressed("GrowRight") or event.is_action_pressed("GrowLeft") or (event.is_action_pressed("GrowUp") and player.is_on_floor()):
+		if player.current_form_state == player.FORM_STATE.NORMAL:
+			state_machine.change_state("ChargeState")
+		else:
+			player.set_defualt_body()	
+			
 func update(delta):
 	pass
 

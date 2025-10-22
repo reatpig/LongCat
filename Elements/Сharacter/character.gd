@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const SECOND_FOR_ONE_SEGMENT = 1
+var SPEED := 100.0
 
 #TODO to another node
 enum FORM_STATE {NORMAL, LONG, WIDE}
 var current_form_state := FORM_STATE.NORMAL
 var end_form_coords := Vector2i(0,0)
+
+@export var end_form_velocity = 250
 
 @onready var current_form = $Form
 @onready var state_machine = $ActionStateMachine
@@ -20,6 +21,7 @@ func set_defualt_body() -> void:
 	tilemap.set_cell(Vector2i(0, 0),0, Vector2i(0,0), 0)
 	tilemap.update_internals()
 	change_state(FORM_STATE.NORMAL, Vector2i(0,0))
+	SPEED = 100
 
 func _ready() -> void:
 	set_defualt_body()
@@ -39,7 +41,22 @@ func _input(event):
 func is_can_grow() -> bool:
 	return current_form_state == FORM_STATE.NORMAL
 		
-func change_state (new_state: FORM_STATE, end_coords: Vector2i):
+func change_state (new_state: FORM_STATE, end_coords := Vector2i(0,0)):
+	var tile_size = tilemap.physics_quadrant_size
+	#В конце удлинения передвигаем кота в конец
+	if new_state == FORM_STATE.NORMAL:
+		position += Vector2(end_form_coords) * tile_size
+		if current_form_state == FORM_STATE.LONG:
+			velocity.y -= end_form_velocity
+		#elif current_form_state == FORM_STATE.WIDE:
+		#	if end_form_coords.x > 0:
+		#		velocity.x += end_form_velocity
+		#	else:
+		#		velocity.x -= end_form_velocity
+	if new_state == FORM_STATE.WIDE:
+		SPEED = 200.0
+	if new_state == FORM_STATE.LONG:
+		SPEED = 50.0
 	current_form_state = new_state
 	end_form_coords = end_coords
 	calculate_collision()

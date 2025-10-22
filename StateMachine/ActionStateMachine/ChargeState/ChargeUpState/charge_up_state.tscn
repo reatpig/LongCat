@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://fb7fn6lgaip"]
+
+[ext_resource type="PackedScene" uid="uid://tlofcyu0etqu" path="res://StateMachine/ActionStateMachine/ChargeState/charge_state.tscn" id="1_pd0w6"]
+[ext_resource type="Script" uid="uid://cqflvbol3m8tt" path="res://StateMachine/ActionStateMachine/ChargeState/ChargeUpState/charge_up_state.gd" id="2_8ooxs"]
+
+[node name="ChargeUpState" instance=ExtResource("1_pd0w6")]
+script = ExtResource("2_8ooxs")
