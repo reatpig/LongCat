@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh2863d05su7k"]
+
+[ext_resource type="Script" uid="uid://u002cniu72mk" path="res://Elements/Form/form.gd" id="1_10e54"]
+
+[node name="Form" type="Node"]
+script = ExtResource("1_10e54")
