@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var SPEED := 100.0
 
 #TODO to another node

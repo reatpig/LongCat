@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1uytyr4tthap"]
+
+[ext_resource type="Script" uid="uid://cb57778jb8gem" path="res://Elements/Enemy/base_enemy.gd" id="1_dyu1t"]
+
+[node name="BaseEnemy" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_dyu1t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(42, 0)
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-35, 0)
+collision_mask = 7
