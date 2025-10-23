@@ -19,9 +19,9 @@ func update(delta):
 		player.velocity.x = direction * speed
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, speed)
-		
+		  
 	#if direction == 0:
-		#state_machine.change_state("IdleState")
+		#state_machine.change_state("IdleState")w
 	  
 func handle_input(event):
 	if event.is_action_pressed("GrowRight") or event.is_action_pressed("GrowLeft") or (event.is_action_pressed("GrowUp") and player.is_on_floor()):

@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpwj6eeeg70s6"]
+
+[ext_resource type="PackedScene" uid="uid://c1uytyr4tthap" path="res://Elements/Enemy/base_enemy.tscn" id="1_kt5am"]
+[ext_resource type="Texture2D" uid="uid://bysjulemvuonb" path="res://Assets/Cute-GSlime-Walk.png" id="2_6tcae"]
+[ext_resource type="Script" uid="uid://d6yprvor4kvc" path="res://Elements/Enemy/Slime/slime.gd" id="2_qsedu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsedu"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvhhf"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdlh6"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crxmn"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o44wb"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjrr"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(640, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq2nk"]
+atlas = ExtResource("2_6tcae")
+region = Rect2(768, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ll6uw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsedu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvhhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdlh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crxmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o44wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq2nk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vo3m"]
+radius = 7.0
+height = 22.0
+
+[node name="Slime" instance=ExtResource("1_kt5am")]
+script = ExtResource("2_qsedu")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ll6uw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 9)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4vo3m")
+
+[node name="RightRay" parent="." index="2"]
+position = Vector2(0, 9)
+target_position = Vector2(12, 0)
+
+[node name="LeftRay" parent="." index="3"]
+position = Vector2(0, 9)
+target_position = Vector2(-12, 0)

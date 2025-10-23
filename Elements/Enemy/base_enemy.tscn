@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb57778jb8gem" path="res://Elements/Enemy/base_enemy.gd" id="1_dyu1t"]
 
-[node name="BaseEnemy" type="AnimatableBody2D"]
+[node name="BaseEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_dyu1t")
